@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goddesses & Poets — Laura Mitchella Agina</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Quicksand:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --void: #03010a;
+        --deep: #0a0518;
+        --mystic: #130a2e;
+        --violet: #6b21a8;
+        --fae: #a855f7;
+        --bloom: #e879f9;
+        --rose: #f472b6;
+        --gold: #fcd34d;
+        --moonlight: #e0d7ff;
+        --stardust: #f5f0ff;
+        --teal-fae: #2dd4bf;
+        --ethereal: rgba(168, 85, 247, 0.15);
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--void);
+        color: var(--moonlight);
+        font-family: 'Cormorant Garamond', serif;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* ─── CUSTOM CURSOR ─── */
+      .cursor {
+        width: 12px;
+        height: 12px;
+        background: var(--bloom);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          transform 0.1s ease,
+          background 0.3s;
+        box-shadow:
+          0 0 20px var(--bloom),
+          0 0 40px var(--fae);
+      }
+      .cursor-trail {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--fae);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: all 0.18s ease;
+        opacity: 0.5;
+      }
+
+      /* ─── STARFIELD ─── */
+      #starfield {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* ─── FLOATING FAIRIES ─── */
+      .fairy {
+        position: fixed;
+        pointer-events: none;
+        z-index: 1;
+        font-size: 1.2rem;
+        opacity: 0;
+        animation: fairyFloat linear infinite;
+      }
+      @keyframes fairyFloat {
+        0% {
+          opacity: 0;
+          transform: translateY(100vh) rotate(0deg);
+        }
+        10% {
+          opacity: 0.8;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-20vh) rotate(720deg);
+        }
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        padding: 1.2rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(
+          180deg,
+          rgba(3, 1, 10, 0.95) 0%,
+          transparent 100%
+        );
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+      }
+      .nav-logo {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.95rem;
+        color: var(--gold);
+        text-shadow: 0 0 20px var(--gold);
+        letter-spacing: 0.15em;
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--moonlight);
+        text-decoration: none;
+        transition: color 0.3s;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--bloom);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: var(--bloom);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* ─── HERO ─── */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 2;
+        padding: 6rem 2rem 4rem;
+        overflow: hidden;
+      }
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        animation: orbPulse ease-in-out infinite alternate;
+      }
+      .orb1 {
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(107, 33, 168, 0.5),
+          transparent 70%
+        );
+        top: -200px;
+        left: -200px;
+        animation-duration: 8s;
+      }
+      .orb2 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 121, 249, 0.35),
+          transparent 70%
+        );
+        bottom: -150px;
+        right: -150px;
+        animation-duration: 10s;
+        animation-delay: -3s;
+      }
+      .orb3 {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 212, 191, 0.25),
+          transparent 70%
+        );
+        top: 40%;
+        left: 60%;
+        animation-duration: 12s;
+        animation-delay: -6s;
+      }
+      @keyframes orbPulse {
+        from {
+          transform: scale(1) translate(0, 0);
+          opacity: 0.7;
+        }
+        to {
+          transform: scale(1.15) translate(20px, -20px);
+          opacity: 1;
+        }
+      }
+
+      .hero-eyebrow {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--teal-fae);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
+      }
+      .hero-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(2.5rem, 7vw, 6rem);
+        line-height: 1.1;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--bloom) 40%,
+          var(--fae) 70%,
+          var(--teal-fae) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 30px rgba(232, 121, 249, 0.4));
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+        margin-bottom: 0.5rem;
+      }
+      .hero-subtitle {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(1rem, 2.5vw, 1.6rem);
+        color: var(--rose);
+        letter-spacing: 0.15em;
+        opacity: 0;
+        animation: fadeUp 1s 0.9s forwards;
+        margin-bottom: 2rem;
+      }
+      .hero-byline {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        color: var(--moonlight);
+        opacity: 0.75;
+        max-width: 520px;
+        line-height: 1.8;
+        opacity: 0;
+        animation: fadeUp 1s 1.2s forwards;
+        margin-bottom: 3rem;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeUp 1s 1.5s forwards;
+      }
+      .btn-primary {
+        padding: 0.85rem 2.5rem;
+        background: linear-gradient(135deg, var(--violet), var(--bloom));
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: none;
+        text-decoration: none;
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 0 50px rgba(232, 121, 249, 0.7);
+      }
+      .btn-ghost {
+        padding: 0.85rem 2.5rem;
+        background: transparent;
+        border: 1px solid rgba(168, 85, 247, 0.5);
+        border-radius: 50px;
+        color: var(--fae);
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: none;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .btn-ghost:hover {
+        background: rgba(168, 85, 247, 0.15);
+        border-color: var(--bloom);
+        transform: translateY(-3px);
+      }
+
+      .scroll-rune {
+        position: absolute;
+        bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(168, 85, 247, 0.6);
+        animation: bounceDown 2s infinite;
+      }
+      .scroll-rune span {
+        font-size: 1.2rem;
+      }
+      @keyframes bounceDown {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(8px);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ─── DIVIDER ─── */
+      .rune-divider {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 1.4rem;
+        opacity: 0.4;
+        letter-spacing: 1rem;
+        color: var(--fae);
+      }
+
+      /* ─── SECTION BASE ─── */
+      section {
+        position: relative;
+        z-index: 2;
+        padding: 6rem 2rem;
+      }
+      .section-label {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: var(--teal-fae);
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        text-align: center;
+        color: var(--gold);
+        text-shadow: 0 0 30px rgba(252, 211, 77, 0.3);
+        margin-bottom: 1rem;
+      }
+      .section-intro {
+        font-style: italic;
+        font-size: 1.1rem;
+        color: rgba(224, 215, 255, 0.7);
+        text-align: center;
+        max-width: 560px;
+        margin: 0 auto 4rem;
+        line-height: 1.9;
+      }
+
+      /* ─── FEATURED POEM ─── */
+      .poem-stage {
+        max-width: 760px;
+        margin: 0 auto;
+        background: linear-gradient(
+          135deg,
+          rgba(107, 33, 168, 0.15),
+          rgba(232, 121, 249, 0.08)
+        );
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        border-radius: 24px;
+        padding: 4rem 5rem;
+        position: relative;
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 0 80px rgba(107, 33, 168, 0.2),
+          inset 0 0 60px rgba(168, 85, 247, 0.05);
+      }
+      .poem-stage::before {
+        content: '✦';
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--void);
+        padding: 0 1rem;
+        color: var(--bloom);
+        font-size: 1.2rem;
+      }
+      .poem-title-tag {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1.3rem;
+        color: var(--rose);
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      .poem-body {
+        font-size: 1.15rem;
+        line-height: 2.2;
+        font-style: italic;
+        color: var(--stardust);
+        text-align: center;
+        white-space: pre-line;
+      }
+      .poem-body em {
+        color: var(--bloom);
+        font-style: normal;
+      }
+      .poem-author {
+        margin-top: 2.5rem;
+        text-align: right;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        color: var(--fae);
+      }
+
+      /* ─── BLOG GRID ─── */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .blog-card {
+        background: linear-gradient(
+          135deg,
+          rgba(19, 10, 46, 0.9),
+          rgba(10, 5, 24, 0.95)
+        );
+        border: 1px solid rgba(168, 85, 247, 0.25);
+        border-radius: 20px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        cursor: none;
+      }
+      .blog-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--violet),
+          var(--bloom),
+          var(--teal-fae)
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .blog-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(232, 121, 249, 0.5);
+        box-shadow: 0 20px 60px rgba(107, 33, 168, 0.3);
+      }
+      .blog-card:hover::before {
+        opacity: 1;
+      }
+      .card-tag {
+        display: inline-block;
+        padding: 0.25rem 0.9rem;
+        border-radius: 50px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+      }
+      .tag-fae {
+        background: rgba(45, 212, 191, 0.15);
+        color: var(--teal-fae);
+        border: 1px solid rgba(45, 212, 191, 0.3);
+      }
+      .tag-mystic {
+        background: rgba(168, 85, 247, 0.15);
+        color: var(--fae);
+        border: 1px solid rgba(168, 85, 247, 0.3);
+      }
+      .tag-spirit {
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--rose);
+        border: 1px solid rgba(244, 114, 182, 0.3);
+      }
+      .tag-poetry {
+        background: rgba(252, 211, 77, 0.12);
+        color: var(--gold);
+        border: 1px solid rgba(252, 211, 77, 0.3);
+      }
+      .card-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1rem;
+        color: var(--stardust);
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+      .card-excerpt {
+        font-style: italic;
+        font-size: 0.95rem;
+        color: rgba(224, 215, 255, 0.65);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.7rem;
+        color: rgba(168, 85, 247, 0.6);
+        letter-spacing: 0.1em;
+      }
+      .card-read {
+        color: var(--bloom);
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .card-read:hover {
+        color: var(--gold);
+      }
+
+      /* ─── CATEGORIES ─── */
+      .categories-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        justify-content: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .cat-pill {
+        padding: 0.7rem 2rem;
+        border-radius: 50px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .cat-pill::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: currentColor;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .cat-pill:hover::before {
+        opacity: 0.1;
+      }
+      .cat-pill:hover {
+        transform: scale(1.05);
+      }
+      .cp1 {
+        background: rgba(107, 33, 168, 0.2);
+        border: 1px solid var(--violet);
+        color: var(--fae);
+      }
+      .cp2 {
+        background: rgba(232, 121, 249, 0.15);
+        border: 1px solid var(--bloom);
+        color: var(--bloom);
+      }
+      .cp3 {
+        background: rgba(45, 212, 191, 0.12);
+        border: 1px solid var(--teal-fae);
+        color: var(--teal-fae);
+      }
+      .cp4 {
+        background: rgba(252, 211, 77, 0.12);
+        border: 1px solid var(--gold);
+        color: var(--gold);
+      }
+      .cp5 {
+        background: rgba(244, 114, 182, 0.15);
+        border: 1px solid var(--rose);
+        color: var(--rose);
+      }
+
+      /* ─── ABOUT ─── */
+      .about-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .about-glyph {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .glyph-ring {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 1px solid rgba(168, 85, 247, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        animation: spinSlow 30s linear infinite;
+      }
+      .glyph-ring::before,
+      .glyph-ring::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(232, 121, 249, 0.2);
+      }
+      .glyph-ring::before {
+        inset: -20px;
+      }
+      .glyph-ring::after {
+        inset: -40px;
+        border-color: rgba(45, 212, 191, 0.15);
+      }
+      @keyframes spinSlow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .glyph-inner {
+        font-size: 5rem;
+        animation: spinSlow 30s linear infinite reverse;
+        filter: drop-shadow(0 0 20px var(--bloom));
+      }
+      .about-text h3 {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1.5rem;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+      }
+      .about-text p {
+        font-size: 1.1rem;
+        line-height: 2;
+        font-style: italic;
+        color: rgba(224, 215, 255, 0.8);
+        margin-bottom: 1.2rem;
+      }
+      .name-trio {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+      .name-badge {
+        padding: 0.4rem 1.2rem;
+        border-radius: 50px;
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.65rem;
+        background: linear-gradient(
+          135deg,
+          rgba(107, 33, 168, 0.3),
+          rgba(232, 121, 249, 0.2)
+        );
+        border: 1px solid rgba(168, 85, 247, 0.4);
+        color: var(--moonlight);
+      }
+
+      /* ─── NEWSLETTER ─── */
+      .newsletter-box {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          rgba(107, 33, 168, 0.2),
+          rgba(19, 10, 46, 0.8)
+        );
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        border-radius: 28px;
+        padding: 4rem 3rem;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 0 100px rgba(107, 33, 168, 0.2);
+      }
+      .newsletter-box h3 {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1.5rem;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .newsletter-box p {
+        font-style: italic;
+        color: rgba(224, 215, 255, 0.7);
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+      .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .newsletter-input {
+        flex: 1;
+        min-width: 220px;
+        padding: 0.85rem 1.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(168, 85, 247, 0.4);
+        border-radius: 50px;
+        color: var(--moonlight);
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      .newsletter-input::placeholder {
+        color: rgba(168, 85, 247, 0.5);
+      }
+      .newsletter-input:focus {
+        border-color: var(--bloom);
+      }
+      .newsletter-btn {
+        padding: 0.85rem 2rem;
+        background: linear-gradient(135deg, var(--violet), var(--bloom));
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: none;
+        transition: all 0.3s;
+        box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+      }
+      .newsletter-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(232, 121, 249, 0.6);
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(168, 85, 247, 0.15);
+      }
+      .footer-logo {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1.2rem;
+        color: var(--gold);
+        margin-bottom: 1rem;
+        text-shadow: 0 0 20px rgba(252, 211, 77, 0.4);
+      }
+      .footer-links {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+      .footer-links a {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: rgba(168, 85, 247, 0.6);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: var(--bloom);
+      }
+      .footer-copy {
+        font-size: 0.75rem;
+        color: rgba(168, 85, 247, 0.3);
+        font-family: 'Quicksand', sans-serif;
+        letter-spacing: 0.1em;
+      }
+
+      /* ─── SCROLL REVEAL ─── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .poem-stage {
+          padding: 2.5rem 2rem;
+        }
+        .about-inner {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 3rem;
+        }
+        .name-trio {
+          justify-content: center;
+        }
+        .newsletter-form {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Starfield Canvas -->
+    <canvas id="starfield"></canvas>
+
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="nav-logo">✦ G&P ✦</a>
+      <ul class="nav-links">
+        <li><a href="#poems">Poems</a></li>
+        <li><a href="#blog">Sacred Scrolls</a></li>
+        <li><a href="#realms">Realms</a></li>
+        <li><a href="#about">Oracle</a></li>
+        <li><a href="#commune">Commune</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+
+      <p class="hero-eyebrow">✦ &nbsp; A Sanctuary of Words &nbsp; ✦</p>
+      <h1 class="hero-title">Goddesses<br />&amp; Poets</h1>
+      <p class="hero-subtitle">Laura · Mitchella · Agina</p>
+      <p class="hero-byline">
+        Where ancient magic meets starlit verse — a realm of fairies, mystic
+        revelations, and poetry born from the sacred feminine.
+      </p>
+      <div class="hero-cta">
+        <a href="#poems" class="btn-primary">Enter the Realm</a>
+        <a href="#blog" class="btn-ghost">Read the Scrolls</a>
+      </div>
+
+      <div class="scroll-rune">
+        <span>↓</span>
+        descend
+      </div>
+    </section>
+
+    <!-- FEATURED POEM -->
+    <section id="poems">
+      <p class="section-label reveal">✦ &nbsp; The Oracle Speaks &nbsp; ✦</p>
+      <h2 class="section-title reveal">Featured Verse</h2>
+      <p class="section-intro reveal">
+        Each poem is a spell — cast with intention, received with wonder.
+      </p>
+
+      <div class="poem-stage reveal">
+        <p class="poem-title-tag">~ The Forest Between Stars ~</p>
+        <div class="poem-body">
+          She walks where moonlight weaves its silver thread through branches no
+          mortal eye has ever seen — Her name is older than the
+          <em>first word</em>, written on the wings of every forgotten fairy
+          queen. She is the space between the thunder and the rain, the echo of
+          a goddess <em>remembering her name</em>. In the cathedral of the wild,
+          where ferns bow to ancient stone, she speaks in constellations — and
+          the universe comes home.
+        </div>
+        <p class="poem-author">— Laura Mitchella Agina</p>
+      </div>
+    </section>
+
+    <div class="rune-divider">✦ ✧ ✦ ✧ ✦</div>
+
+    <!-- BLOG GRID -->
+    <section id="blog">
+      <p class="section-label reveal">✦ &nbsp; Sacred Scrolls &nbsp; ✦</p>
+      <h2 class="section-title reveal">From the Grimoire</h2>
+      <p class="section-intro reveal">
+        Musings on magic, moonlight, and the language of the soul.
+      </p>
+
+      <div class="blog-grid">
+        <div class="blog-card reveal">
+          <span class="card-tag tag-fae">✨ Fairy Lore</span>
+          <h3 class="card-title">
+            The Court of Dusk Fairies: A Meditation on In-Between Places
+          </h3>
+          <p class="card-excerpt">
+            There is a magic that lives only in thresholds — the breath before
+            dawn, the heartbeat between sleep and waking...
+          </p>
+          <div class="card-meta">
+            <span>Full Moon · Mar 2025</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+
+        <div class="blog-card reveal">
+          <span class="card-tag tag-mystic">🔮 Mystical</span>
+          <h3 class="card-title">
+            Seven Names of the Moon Goddess: A Poetic Invocation
+          </h3>
+          <p class="card-excerpt">
+            She has been called by a thousand names across a thousand lifetimes.
+            Each name is a different facet of the same eternal light...
+          </p>
+          <div class="card-meta">
+            <span>Waning Crescent · Feb 2025</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+
+        <div class="blog-card reveal">
+          <span class="card-tag tag-spirit">🌿 Spiritual</span>
+          <h3 class="card-title">
+            On Grief & Growing: When the Forest Teaches You to Let Go
+          </h3>
+          <p class="card-excerpt">
+            Some lessons only come in the language of roots and seasons. The
+            forest does not mourn its leaves — it transforms them...
+          </p>
+          <div class="card-meta">
+            <span>Dark Moon · Jan 2025</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+
+        <div class="blog-card reveal">
+          <span class="card-tag tag-poetry">📜 Poetry</span>
+          <h3 class="card-title">
+            Constellations She Named After Herself: A Collection
+          </h3>
+          <p class="card-excerpt">
+            Six poems written during the meteor shower, when the sky felt like a
+            mirror and every falling star whispered a truth...
+          </p>
+          <div class="card-meta">
+            <span>New Moon · Jan 2025</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+
+        <div class="blog-card reveal">
+          <span class="card-tag tag-fae">✨ Fairy Lore</span>
+          <h3 class="card-title">
+            How to Hear the Whispering Wood: A Sensory Ritual for Poets
+          </h3>
+          <p class="card-excerpt">
+            Stand at the edge of the treeline at dusk. Close your eyes. Breathe
+            in once for the earth, once for the sky, and once for the space
+            between...
+          </p>
+          <div class="card-meta">
+            <span>Waxing Moon · Dec 2024</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+
+        <div class="blog-card reveal">
+          <span class="card-tag tag-mystic">🔮 Mystical</span>
+          <h3 class="card-title">
+            The Alchemy of Words: Turning Pain into Sacred Poetry
+          </h3>
+          <p class="card-excerpt">
+            Every wound is a doorway. Every scar a stanza. Poetry is not
+            decoration — it is transmutation, the oldest magic known to women...
+          </p>
+          <div class="card-meta">
+            <span>Full Moon · Dec 2024</span>
+            <a href="#" class="card-read">Read →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rune-divider">✦ ✧ ✦ ✧ ✦</div>
+
+    <!-- CATEGORIES -->
+    <section id="realms">
+      <p class="section-label reveal">✦ &nbsp; Navigate &nbsp; ✦</p>
+      <h2 class="section-title reveal">The Realms</h2>
+      <p class="section-intro reveal">
+        Choose your portal and wander through the worlds within this grimoire.
+      </p>
+      <div class="categories-wrap reveal">
+        <a href="#" class="cat-pill cp1">🌙 Moon Cycles</a>
+        <a href="#" class="cat-pill cp2">🌸 Fairy Courts</a>
+        <a href="#" class="cat-pill cp3">💫 Starseed Verses</a>
+        <a href="#" class="cat-pill cp4">📜 Original Poetry</a>
+        <a href="#" class="cat-pill cp5">🌺 Divine Feminine</a>
+        <a href="#" class="cat-pill cp1">🔮 Oracle Musings</a>
+        <a href="#" class="cat-pill cp2">🧚 Fairy Lore</a>
+        <a href="#" class="cat-pill cp3">🌿 Earth Rituals</a>
+        <a href="#" class="cat-pill cp4">✨ Spells & Intentions</a>
+        <a href="#" class="cat-pill cp5">🦋 Metamorphosis</a>
+      </div>
+    </section>
+
+    <div class="rune-divider">✦ ✧ ✦ ✧ ✦</div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <p class="section-label reveal">✦ &nbsp; The Oracle &nbsp; ✦</p>
+      <h2 class="section-title reveal">Who Walks Here</h2>
+
+      <div class="about-inner">
+        <div class="about-glyph reveal">
+          <div class="glyph-ring">
+            <div class="glyph-inner">🌙</div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <h3>Goddess · Poet · Wanderer</h3>
+          <p>
+            I am Laura — and also Mitchella, and Agina. Like the moon, I wear
+            many faces, and I speak in many tongues. Each name is a different
+            door into the same sacred house.
+          </p>
+          <p>
+            This space was born from a need to speak the unspeakable — the
+            language of ferns after rain, of starlight on still water, of grief
+            transmuted into gold. Here, poetry is ritual and mysticism is mother
+            tongue.
+          </p>
+          <p>
+            Welcome to the wild, luminous, in-between place. Pull up a root.
+            Stay awhile. The fairies have been expecting you.
+          </p>
+          <div class="name-trio">
+            <span class="name-badge">Laura</span>
+            <span class="name-badge">Mitchella</span>
+            <span class="name-badge">Agina</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rune-divider">✦ ✧ ✦ ✧ ✦</div>
+
+    <!-- NEWSLETTER -->
+    <section id="commune">
+      <p class="section-label reveal">✦ &nbsp; Join the Circle &nbsp; ✦</p>
+      <h2 class="section-title reveal">The Sacred Commune</h2>
+      <div class="newsletter-box reveal">
+        <h3>Whispers to Your Inbox</h3>
+        <p>
+          New poems, moon musings, fairy dispatches, and mystical meditations —
+          delivered with every new moon and full moon cycle.
+        </p>
+        <div class="newsletter-form">
+          <input
+            type="email"
+            class="newsletter-input"
+            placeholder="your@email.com"
+          />
+          <button class="newsletter-btn">Join the Coven</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">✦ Goddesses & Poets ✦</div>
+      <ul class="footer-links">
+        <li><a href="#poems">Poems</a></li>
+        <li><a href="#blog">Scrolls</a></li>
+        <li><a href="#realms">Realms</a></li>
+        <li><a href="#about">Oracle</a></li>
+        <li><a href="#commune">Commune</a></li>
+      </ul>
+      <p class="footer-copy">
+        © 2025 Laura Mitchella Agina · All spells reserved · Made under
+        moonlight
+      </p>
+    </footer>
+
+    <script>
+      // ─── CUSTOM CURSOR ───
+      const cursor = document.getElementById('cursor');
+      const trail = document.getElementById('cursorTrail');
+      let mx = 0,
+        my = 0,
+        tx = 0,
+        ty = 0;
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+      });
+      function animCursor() {
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+        tx += (mx - tx) * 0.12;
+        ty += (my - ty) * 0.12;
+        trail.style.left = tx + 'px';
+        trail.style.top = ty + 'px';
+        requestAnimationFrame(animCursor);
+      }
+      animCursor();
+
+      // ─── STARFIELD ───
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < 220; i++) {
+          stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.5 + 0.2,
+            alpha: Math.random(),
+            speed: Math.random() * 0.004 + 0.001,
+            hue: Math.random() > 0.85 ? 280 : 260,
+          });
+        }
+      }
+      function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach((s) => {
+          s.alpha += s.speed;
+          if (s.alpha > 1 || s.alpha < 0) s.speed *= -1;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${s.hue}, 80%, 85%, ${s.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(drawStars);
+      }
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        initStars();
+      });
+      resizeCanvas();
+      initStars();
+      drawStars();
+
+      // ─── FLOATING FAIRIES ───
+      const fairySyms = ['🧚', '✨', '🌸', '⭐', '🌟', '💫', '🦋', '🌙'];
+      function spawnFairy() {
+        const el = document.createElement('div');
+        el.className = 'fairy';
+        el.textContent =
+          fairySyms[Math.floor(Math.random() * fairySyms.length)];
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.fontSize = 0.8 + Math.random() * 1.2 + 'rem';
+        const dur = 8 + Math.random() * 10;
+        el.style.animationDuration = dur + 's';
+        el.style.animationDelay = '0s';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000);
+      }
+      setInterval(spawnFairy, 1800);
+      for (let i = 0; i < 5; i++) setTimeout(spawnFairy, i * 400);
+
+      // ─── SCROLL REVEAL ───
+      const revealEls = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+
+      // ─── NEWSLETTER BTN ───
+      document
+        .querySelector('.newsletter-btn')
+        .addEventListener('click', () => {
+          const input = document.querySelector('.newsletter-input');
+          if (input.value.includes('@')) {
+            input.value = '';
+            input.placeholder = '✦ You have joined the sacred circle ✦';
+          }
+        });
+    </script>
+  </body>
+</html>
